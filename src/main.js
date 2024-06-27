@@ -12,7 +12,6 @@ import { detectRequest, createEvent, methods } from './common.js';
 import { gsap } from "gsap";
 import { ScrollToPlugin} from 'gsap/all';
 gsap.registerPlugin(ScrollToPlugin) 
-
 import './scss/app.scss';
 
 const appUrl = window.location.hostname == 'localhost' ? 'http://localhost:8001' : '';

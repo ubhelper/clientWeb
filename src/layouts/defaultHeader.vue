@@ -28,13 +28,13 @@
                         <li><a href="javascript:;" @click="scrollTop(1)">HOME</a></li>
                         <li><a href="javascript:;" @click="scrollTop(2)">WHAT WE DO</a></li>
                         <li><a href="javascript:;" @click="scrollTop(3)">HOW TO USE</a></li>
-                        <li><a href="javascript:;">CONTACT</a></li>
+                        <li><a href="javascript:;" @click="scrollTop(4)">CONTACT</a></li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="scrolltop" @click=scrollTop :hidden=hidden>
+        <div class="scrolltop" ref="scrollTop" @click=scrollTop :hidden=hidden>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"/></svg>
         </div>
     </div>
@@ -50,7 +50,7 @@ export default {
     },
     methods: {
         handleScroll() {
-            if (window.pageYOffset < 10) {
+            if (document.querySelector('.scroll-block').scrollTop < 10) {
                 this.whiteBg = false;
                 this.hidden = true;
             } else {
@@ -60,11 +60,11 @@ export default {
         },
         scrollTop(scroll = null) {
             if (!scroll) {
-                this.$_gsap.to(window, { duration: 1, scrollTo: 0 });
+                this.$_gsap.to(document.querySelector('.scroll-block'), { duration: 1, scrollTo: 0 });
                 return;
             }
 
-            this.$_gsap.to(window, { duration: 1, scrollTo: window.innerHeight * (scroll-1) });
+            this.$_gsap.to(document.querySelector('.scroll-block'), { duration: 1, scrollTo: window.innerHeight * (scroll-1) });
             this.popup = false;
         }
     },

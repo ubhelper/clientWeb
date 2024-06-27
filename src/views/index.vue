@@ -1,5 +1,11 @@
+<style>
+    .swiper-container {
+        overflow: hidden;
+    }
+</style>
+
 <template>
-    <div>
+    <div class="scroll-block" ref="scroller">
         <section class="section bg-linear">
             <div class="search-cont">
                 <img src="@/assets/images/searchBar.png" class="search-bar" alt="">
@@ -7,7 +13,6 @@
                 <p class="support-text titan-one-regular">NEED A</p>
                 <p class="support-text-moving titan-one-regular" id="text">{{ typify }}</p>
             </div>
-
             <p class="montserratNormal text-grey desc">ХЭРЭВ ТА ТУСЧ ХӨРШҮҮДТЭЙ НЭГДЭХИЙГ ХҮСВЭЛ,<br>ДАРААХ ХОЛБООСУУДЫГ АШИГЛАЖ АППЛИКЭЙШНЭЭ ТАТНА УУ.</p>
             <div class="links">
                 <a href="javascript:;"><img src="@/assets/images/appstore.png" alt=""></a>
@@ -57,34 +62,52 @@
                 БИД ТАНТАЙ ХАМТ ТЭДГЭЭР АСУУДЛУУДЫГ ШИЙДВЭРЛЭХ БОЛНО
             </div>
         </section>
-        <section class="section bg-linear about">
-            <div class="description">
-                <p class="title montserratNormal">
-                    ӨӨРТ ХАМГИЙН ОЙР<br><span>ХӨРШДӨӨ ТУСЛАХ</span>, ТҮҮНЭЭС<br>ТУСЛАМЖ ХҮСЭХ
-                </p>
-            </div>
-            <div class="images">
-                <img src="@/assets/images/mappage.png" alt="">
-                <img src="@/assets/images/homepage.png" alt="">
-            </div>
-        </section>
+        
+        <swiper
+            :slides-per-view="1"
+            :space-between="0"
+            :speed="1000"
+            :loop="false"
+            @swiper="onSwiper"
+            >
+            <swiper-slide>
+                <section class="section bg-linear about">
+                    <div class="description">
+                        <p class="title montserratNormal">
+                            ӨӨРТ ХАМГИЙН ОЙР<br><span>ХӨРШДӨӨ ТУСЛАХ</span>, ТҮҮНЭЭС<br>ТУСЛАМЖ ХҮСЭХ
+                        </p>
+                    </div>
+                    <div class="images">
+                        <img src="@/assets/images/mappage.png" alt="">
+                        <img src="@/assets/images/homepage.png" alt="">
+                    </div>
+                </section>
+            </swiper-slide>
 
-        <section class="section bg-linear-back about">
-            <div class="images back">
-                <img src="@/assets/images/jobtypes.png" alt="">
-                <img src="@/assets/images/userdescription.png" alt="">
-            </div>
-            <div class="description back">
-                <p class="title montserratNormal">
-                    ТӨРӨЛ БҮРИЙН АЖИЛ <br>БОЛОН<span> БАТАЛГААЖСАН</span><br>ХЭРЭГЛЭГЧИД
-                </p>
-            </div>
-        </section>
-        <section class="section contact">
-
-            <div class="grid big" style="width: 55%; height: 70%">
+            <swiper-slide>
+                <section class="section bg-linear about">
+                    <div class="images back">
+                        <img src="@/assets/images/jobtypes.png" alt="">
+                        <img src="@/assets/images/userdescription.png" alt="">
+                    </div>
+                    <div class="description back">
+                        <p class="title montserratNormal">
+                            ТӨРӨЛ БҮРИЙН АЖИЛ <br>БОЛОН<span> БАТАЛГААЖСАН</span><br>ХЭРЭГЛЭГЧИД
+                        </p>
+                    </div>
+                </section>
+            </swiper-slide>
+        </swiper>
+        <section class="section contact bg-linear-back">
+            <div class="grid big" :style="{width: '55%', height: '70%'}">
                 <div class="grid-item">
-                    hello
+                    <div class="big-description">
+                        <span>
+                            ХЭРВЭЭ ТИЙМ БОЛ ТУСЧ ХӨРШҮҮДДЭЭ ХАНДААРАЙ.
+                            БИД ТАНТАЙ ХАМТ ТЭДГЭЭР АСУУДЛУУДЫГ ШИЙДВЭРЛЭХ БОЛНО
+                        </span>
+                        
+                    </div>
                 </div>
                 <div class="gird-item">
                     <div class="links">
@@ -92,7 +115,10 @@
                         <a href="javascript:;"><img src="@/assets/images/playstore.png" alt=""></a>
                         <a href="javascript:;" class="register-btn">
                             <img src="@/assets/images/playstore.png" alt="">
-                            <p>JOIN US</p>
+                            <p>
+                                JOIN US
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+                            </p>
                         </a>
                     </div>
                 </div>
@@ -138,14 +164,25 @@
     </div>
 </template>
 <script>
+import { SwiperCore, Swiper, SwiperSlide } from 'swiper-vue2';
+import 'swiper/swiper-bundle.css';
 export default {
+    components: {
+        Swiper,
+        SwiperSlide
+    },
     data() {
         return {
-            typify: ''
+            typify: '',
+            swiper: null,
+            wheel: 0,
+            isScroll: true
         }
     },
+    beforeMount() {
+        window.onwheel  = this.scroll;
+    },
     mounted() {
-        
         this.typify = Typify('#text', {
             text: ['HELPER?', 'FRIEND?'],
             delay: 100,
@@ -156,7 +193,56 @@ export default {
     },
     methods: {
         goNextSection(sectionId) {
-            this.$_gsap.to(window, { duration: 1, scrollTo: window.innerHeight * (sectionId-1) });
+            this.$_gsap.to(this.$refs.scroller, { duration: 1, scrollTo: window.innerHeight * (sectionId-1) });
+        },
+        swiperSlideTo(index) {
+            this.swiper.slideTo(index);
+        },
+        onSwiper (swiper) {
+            this.swiper = swiper;
+        },
+        scrollTo(scrollTo) {
+            this.$_gsap.to(this.$refs.scroller, { duration: 1, scrollTo, onComplete: () => {
+                this.isScroll = true;
+                this.wheel = 0;
+            } });
+        },
+        scroll(event) {
+
+            if (!this.isScroll) return;
+
+            this.wheel += event.deltaY;
+            if (this.wheel > 100) {
+                if (this.$refs.scroller.scrollTop / window.innerHeight === 2) {
+                    if (this.swiper.activeIndex === 1) {
+                        this.isScroll = false;
+                        this.scrollTo(this.$refs.scroller.scrollTop+window.innerHeight);
+                    } else {
+                        this.isScroll = false;
+                        const timeout = 1000;
+                        this.swiper.slideTo(this.swiper.activeIndex + 1, timeout);
+                        setTimeout(() => { this.isScroll = true; }, timeout);
+                    }
+                } else {
+                    this.isScroll = false;
+                    this.scrollTo(this.$refs.scroller.scrollTop+window.innerHeight);
+                }
+            } else if (this.wheel < -100) {
+                if (this.$refs.scroller.scrollTop / window.innerHeight === 2) {
+                    if (this.swiper.activeIndex === 0) {
+                        this.isScroll = false;
+                        this.scrollTo(this.$refs.scroller.scrollTop-window.innerHeight);
+                    } else {
+                        this.isScroll = false;
+                        const timeout = 1000;
+                        this.swiper.slideTo(this.swiper.activeIndex - 1, timeout);
+                        setTimeout(() => { this.isScroll = true; }, timeout);
+                    }
+                } else {
+                    this.isScroll = false;
+                    this.scrollTo(this.$refs.scroller.scrollTop-window.innerHeight);
+                }
+            }
         }
     }
 }

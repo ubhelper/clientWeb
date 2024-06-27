@@ -306,12 +306,15 @@
 
 .section.contact {
   justify-content: flex-start;
+  position: relative;
+
   .grid {
     display: grid;
     width: 100%;
     padding-top: 5%;
     height: 100%;
     grid-template-columns: 1fr 1fr;
+    position: relative;
 
     &.big {
       padding: 0;
@@ -339,16 +342,29 @@
           a {
             color: #525151;
             text-decoration: none;
+            &:hover {
+              color: #000000;
+            }
           }
         }
 
         &.address {
-          line-height: 120%;
+          line-height: 200%;
           .phone, .email {
             font-weight: 500;
             @include vw-convert-desktop(margin-top, 10px);
           }
         }
+      }
+
+
+      .big-description {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: right;
       }
     }
 
@@ -375,6 +391,10 @@
         cursor: pointer;
         @include vw-convert-desktop(height, 30px);
         fill: #6e6e6e;
+
+        &:hover {
+          fill: #000000;
+        }
       }
     }
   }
@@ -406,10 +426,10 @@
     width: 100%;
     height: 100%;
     a {
-      width: 50%;
+      width: 30%;
       
       img {
-        @include vw-convert-desktop(border-radius, 25px);
+        @include vw-convert-desktop(border-radius, 15px);
       }
 
 
@@ -417,13 +437,13 @@
         // height: 15%;
         background-color: #FFFFFF;
         display: flex;
-        @include vw-convert-desktop(border-radius, 25px);
+        @include vw-convert-desktop(border-radius, 15px);
         justify-content: center;
         align-items: center;
         position: relative;
         box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
         color: #000000;
-        font-weight: 500;
+        font-weight: 600;
 
         img {
           opacity: 0;
@@ -431,9 +451,18 @@
 
         p {
           position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          @include vw-convert-desktop(font-size, 15px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          @include vw-convert-desktop(gap, 20px);
+          svg {
+            width: 8%;
+          }
         }
       }
     }
