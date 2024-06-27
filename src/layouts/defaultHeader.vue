@@ -69,7 +69,12 @@ export default {
         }
     },
     mounted() {
-        window.addEventListener('scroll', this.handleScroll);
+        const timer = setInterval(() => {
+            if (document.querySelector('.scroll-block')) {
+                clearInterval(timer);
+                document.querySelector('.scroll-block').addEventListener('scroll', this.handleScroll);
+            }
+        }, 100);
     }
 }
 </script>
