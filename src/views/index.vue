@@ -103,8 +103,7 @@
                 <div class="grid-item">
                     <div class="big-description">
                         <span>
-                            ХЭРВЭЭ ТИЙМ БОЛ ТУСЧ ХӨРШҮҮДДЭЭ ХАНДААРАЙ.
-                            БИД ТАНТАЙ ХАМТ ТЭДГЭЭР АСУУДЛУУДЫГ ШИЙДВЭРЛЭХ БОЛНО
+                            ХЭРВЭЭ ТА ТУСЧ ХӨРШҮҮДТЭЙ НЭГДЭХИЙГ ХҮСВЭЛ ДАРААХ ХОЛБООСУУДААР ХАНДАЖ БҮРТГЭЛЭЭ ҮҮСГЭЭРЭЙ. 
                         </span>
                         
                     </div>
@@ -113,13 +112,13 @@
                     <div class="links">
                         <a href="javascript:;"><img src="@/assets/images/appstore.png" alt=""></a>
                         <a href="javascript:;"><img src="@/assets/images/playstore.png" alt=""></a>
-                        <a href="javascript:;" class="register-btn">
+                        <router-link to="/register" class="register-btn">
                             <img src="@/assets/images/playstore.png" alt="">
                             <p>
                                 JOIN US
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
                             </p>
-                        </a>
+                        </router-link>
                     </div>
                 </div>
             </div>

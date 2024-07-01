@@ -365,6 +365,8 @@
         justify-content: center;
         align-items: center;
         text-align: right;
+        @include vw-convert-desktop(font-size, 20px);
+        // @include vw-convert-desktop(padding-right, 100px);
       }
     }
 
@@ -425,8 +427,9 @@
     @include vw-convert-desktop(gap, 10px);
     width: 100%;
     height: 100%;
+    padding-left: 100px;
     a {
-      width: 30%;
+      width: 40%;
       
       img {
         @include vw-convert-desktop(border-radius, 15px);

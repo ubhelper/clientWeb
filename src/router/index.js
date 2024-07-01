@@ -17,6 +17,15 @@ let routes = [
 		},
 		component: () => import('../views/index.vue')
 	},
+	{
+		path: '/register',
+		name: 'Register',
+		meta: {
+			title: 'Personal assistant',
+			auth: false
+		},
+		component: () => import('../views/register.vue')
+	},
 ]
 
 const auth = {

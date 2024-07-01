@@ -2,9 +2,9 @@
     <div>
         <div class="header" v-bind:class="{ 'bg-white': whiteBg }">
             <div class="container">
-                <img class="logo" src="@/assets/logo.png" alt="">
+                <router-link to="/"><img class="logo" src="@/assets/logo.png" alt=""></router-link>
 
-                <div class="menu-bar">
+                <div class="menu-bar" v-if="$route.name == 'Home'">
                     <a href="javascript:;" @click="popup = true">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100" height="100" viewBox="0 0 30 30">
                             <path d="M 3 7 A 1.0001 1.0001 0 1 0 3 9 L 27 9 A 1.0001 1.0001 0 1 0 27 7 L 3 7 z M 3 14 A 1.0001 1.0001 0 1 0 3 16 L 27 16 A 1.0001 1.0001 0 1 0 27 14 L 3 14 z M 3 21 A 1.0001 1.0001 0 1 0 3 23 L 27 23 A 1.0001 1.0001 0 1 0 27 21 L 3 21 z"></path>
@@ -29,6 +29,7 @@
                         <li><a href="javascript:;" @click="scrollTop(2)">WHAT WE DO</a></li>
                         <li><a href="javascript:;" @click="scrollTop(3)">HOW TO USE</a></li>
                         <li><a href="javascript:;" @click="scrollTop(4)">CONTACT</a></li>
+                        <!-- <li><router-link to="/register">REGISTER</router-link></li> -->
                     </ul>
                 </div>
             </div>
@@ -40,6 +41,8 @@
     </div>
 </template>
 <script>
+import router from '../router';
+
 export default {
     data() {
         return {
