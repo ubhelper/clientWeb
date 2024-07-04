@@ -11,6 +11,9 @@
                         </svg>
                     </a>
                 </div>
+                <div v-else class="menu-bar">
+                    <router-link to="/"><i class="el-icon-right"></i></router-link>
+                </div>
             </div>
         </div>
 

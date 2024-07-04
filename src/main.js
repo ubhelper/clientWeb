@@ -14,7 +14,7 @@ import { ScrollToPlugin} from 'gsap/all';
 gsap.registerPlugin(ScrollToPlugin) 
 import './scss/app.scss';
 
-const appUrl = window.location.hostname == 'localhost' ? 'http://localhost:8001' : '';
+const appUrl = window.location.hostname == 'localhost' ? 'http://localhost:5100' : '';
 const token = localStorage.getItem('token');
 // const appUrl = 'http://localhost:8001';
 

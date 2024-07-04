@@ -13,6 +13,11 @@ const detectRequest = async (method, url, data) => {
     return e.response;
   });
 
+//   console.log(response, "=-==--=-=");
+//   if (response.status === 409) {
+//     return;
+//   }
+
   if (response.status === 200) {
     return response.data ? response.data : true;
   }
