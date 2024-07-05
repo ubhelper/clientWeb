@@ -12,7 +12,7 @@
                     </a>
                 </div>
                 <div v-else class="menu-bar">
-                    <router-link to="/"><i class="el-icon-right"></i></router-link>
+                    <router-link to="/"><i class="el-icon-back"></i></router-link>
                 </div>
             </div>
         </div>

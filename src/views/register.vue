@@ -13,7 +13,7 @@
             </div>
             <div>
                 <el-form :model="ruleForm" :rules="rules" ref="ruleForm" class="demo-ruleForm">
-                    <el-row :gutter="20">
+                    <el-row>
                         <el-col :span="12">
                             <el-form-item label="Овог" prop="last_name">
                                 <el-input type="text" v-model="ruleForm.last_name"></el-input>
@@ -25,7 +25,7 @@
                             </el-form-item>
                         </el-col>
                     </el-row>
-                    <el-row :gutter="20">
+                    <el-row>
                         <el-col :span="12">
                             <el-form-item label="Регистр" prop="register">
                                 <el-input type="text" v-model="ruleForm.register"></el-input>
@@ -37,7 +37,7 @@
                             </el-form-item>
                         </el-col>
                     </el-row>
-                    <el-row :gutter="20">
+                    <el-row>
                         <el-col :span="12">
                             <el-form-item label="И-мэйл хаяг" prop="email">
                                 <el-input type="email" v-model="ruleForm.email"></el-input>
@@ -53,7 +53,7 @@
                             </el-form-item>
                         </el-col>
                     </el-row>
-                    <el-row :gutter="20">
+                    <el-row>
                         <el-col :span="12">
                             <el-form-item label="Нууц үг" prop="password">
                                 <el-input type="password" show-password v-model="ruleForm.password"></el-input>
@@ -72,7 +72,7 @@
                             </p>
                         </el-col>
                         <el-col :span="24">
-                            <el-form-item>
+                            <el-form-item class="create-btn-container">
                                 <el-button class="create-btn" @click="submitForm">Бүртгүүлэх</el-button>
                             </el-form-item>
                         </el-col>

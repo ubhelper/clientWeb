@@ -126,7 +126,7 @@
     }
 }
 
-.el-icon-right{
+.el-icon-back{
     color: #000;
-    font-size: 2rem;
+    @include vw-convert-desktop(font-size, 35px);
 }
