@@ -122,7 +122,7 @@
 
 .el-button {
     @include vw-convert-desktop(font-size, 14px);
-    @include vw-convert-desktop(padding, 12px 20px);
+    @include vw-convert-desktop(padding, 15px 20px);
     transition: 0;
 }
 
