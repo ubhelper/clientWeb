@@ -218,7 +218,7 @@ export default {
                         this.scrollTo(this.$refs.scroller.scrollTop+window.innerHeight);
                     } else {
                         this.isScroll = false;
-                        const timeout = 1000;
+                        const timeout = 1500;
                         this.swiper.slideTo(this.swiper.activeIndex + 1, timeout);
                         setTimeout(() => { this.isScroll = true; }, timeout);
                     }
@@ -233,7 +233,7 @@ export default {
                         this.scrollTo(this.$refs.scroller.scrollTop-window.innerHeight);
                     } else {
                         this.isScroll = false;
-                        const timeout = 1000;
+                        const timeout = 1500;
                         this.swiper.slideTo(this.swiper.activeIndex - 1, timeout);
                         setTimeout(() => { this.isScroll = true; }, timeout);
                     }
